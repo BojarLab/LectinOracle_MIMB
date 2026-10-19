@@ -6,19 +6,16 @@ import torch
 import pickle
 import matplotlib.pyplot as plt
 import seaborn as sns
-from glycowork.glycan_data.loader import HashableDict
-from glycowork.motif.processing import get_lib
 from sklearn.model_selection import train_test_split
 from esm.models.esmc import ESMC
-from glycowork.glycan_data.loader import glycan_binding
-from glycowork.motif.processing import canonicalize_iupac
+from glycowork.glycan_data.loader import glycan_binding, HashableDict
+from glycowork.motif.processing import canonicalize_iupac, get_lib
 from glycowork.motif.analysis import get_pvals_motifs
-from glycowork.ml.models import prep_model
+from glycowork.motif.draw import GlycoDraw
+from glycowork.ml.models import prep_model, LectinOracle
 from glycowork.ml.model_training import train_model, training_setup
-from glycowork.ml.models import LectinOracle
 from glycowork.ml.inference import get_lectin_preds, get_esmc_representations
 from glycowork.ml.processing import split_data_to_train
-from glycowork.motif.draw import GlycoDraw
 ## Training LectinOracle from scratch
 DATA_DIR = Path("data")
 OUTPUT_FILE = DATA_DIR / "lectin_embeddings.pkl"
